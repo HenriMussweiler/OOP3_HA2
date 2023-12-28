@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="541.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.teilnehmerverwaltung.TeilnehmerAendernController">
+
+    <children>
+        <TableView fx:id="teilnehmerTableView" layoutX="31.0" layoutY="76.0" onMouseClicked="#teilnehmerAngeklickt" prefHeight="302.0" prefWidth="801.0">
+            <columns>
+                <TableColumn fx:id="teilnehmerIdColumn" text="TeilnehmerID" />
+                <TableColumn fx:id="nameColumn" text="Name" />
+                <TableColumn fx:id="vornameColumn" text="Vorname" />
+                <TableColumn fx:id="strasseColumn" text="Strasse" />
+                <TableColumn fx:id="hausnummerColumn" text="Hausnummer" />
+                <TableColumn fx:id="plzColumn" text="Postleitzahl" />
+                <TableColumn fx:id="ortColumn" text="Ort" />
+                <TableColumn fx:id="ibanColumn" text="IBAN" />
+                <TableColumn fx:id="mailColumn" text="Mail" />
+                <TableColumn fx:id="telefonColumn" text="Telefon" />
+            </columns>
+        </TableView>
+        <Label layoutX="311.0" layoutY="37.0" text="Teilnehmer Übersicht">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="zurueckButton" layoutX="31.0" layoutY="431.0" mnemonicParsing="false" onAction="#zurueckButtonClicked" text="Zurück" />
+      <Label layoutX="31.0" layoutY="401.0" text="Teilnehmer zum Ändern doppelklicken" />
+    </children>
+</AnchorPane>

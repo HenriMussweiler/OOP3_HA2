@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import jfxtras.scene.control.LocalDateTimeTextField?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ui.ausleihvorgang.AusleihvorgangAbschliessenErweiterungController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <Label layoutX="142.0" layoutY="34.0" text="Ausleihvorgang Ändern">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="45.0" layoutY="90.0" text="Teilnehmer: " />
+        <ComboBox fx:id="teilnehmerComboBox" layoutX="180.0" layoutY="85.0" promptText="Teilnehmer" />
+        <Label layoutX="45.0" layoutY="140.0" text="Fahrzeug: " />
+        <ComboBox fx:id="fahrzeugComboBox" layoutX="180.0" layoutY="135.0" promptText="Fahrzeug" />
+        <Label layoutX="45.0" layoutY="190.0" text="Startdatum: " />
+        <Label layoutX="45.0" layoutY="240.0" text="Enddatum: " />
+        <Button fx:id="speichernButton" layoutX="246.0" layoutY="360.0" mnemonicParsing="false" onAction="#speichernButtonClicked" text="Abschließen" />
+        <Button fx:id="zurueckButton" layoutX="142.0" layoutY="360.0" mnemonicParsing="false" onAction="#zurueckButtonClicked" text="Zurück" />
+        <Label layoutX="45.0" layoutY="290.0" text="Gefahrene Kilometer:" />
+        <TextField fx:id="gefahreneKilometerTextField" layoutX="180.0" layoutY="285.0" promptText="Gefahrene Kilometer" />
+        <LocalDateTimeTextField fx:id="startdatumPicker" layoutX="180.0" layoutY="186.0" />
+        <LocalDateTimeTextField fx:id="enddatumPicker" layoutX="180.0" layoutY="236.0" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ui.fuhrparkverwaltung.FahrzeugLoeschenController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <Label layoutX="16.0" layoutY="29.0" text="Fahrzeug zum Löschen auswählen durch Doppelklick:">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+
+        <TableView fx:id="fahrzeugTableView" layoutX="16.0" layoutY="63.0" prefHeight="310.0" prefWidth="769.0">
+            <columns>
+                <TableColumn fx:id="fahrzeugIdColumn" prefWidth="79.0" text="FahrzeugID" />
+                <TableColumn fx:id="modellColumn" prefWidth="42.0" text="Modell" />
+                <TableColumn fx:id="herstellerColumn" prefWidth="64.0" text="Hersteller" />
+                <TableColumn fx:id="ausstattungColumn" prefWidth="72.0" text="Ausstattung" />
+                <TableColumn fx:id="baujahrColumn" prefWidth="55.0" text="Baujahr" />
+                <TableColumn fx:id="getriebeColumn" prefWidth="63.0" text="Getriebe" />
+                <TableColumn fx:id="kilometerstandColumn" prefWidth="91.0" text="Kilometerstand" />
+                <TableColumn fx:id="kraftstoffartColumn" prefWidth="76.0" text="Kraftstoffart" />
+                <TableColumn fx:id="leistungColumn" prefWidth="89.0" text="Leistung [KW]" />
+                <TableColumn fx:id="sitzplaetzeColumn" prefWidth="68.0" text="Sitzplätze" />
+                <TableColumn fx:id="sharingStandortColumn" prefWidth="68.0" text="Standort" />
+            </columns>
+        </TableView>
+
+
+        <Button fx:id="zurueckButton" layoutX="16.0" layoutY="382.0" mnemonicParsing="false" onAction="#zurueckButtonClicked" text="Zurück" />
+    </children>
+</AnchorPane>

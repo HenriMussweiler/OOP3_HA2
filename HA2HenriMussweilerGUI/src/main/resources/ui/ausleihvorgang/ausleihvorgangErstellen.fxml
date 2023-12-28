@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import jfxtras.scene.control.LocalDateTimeTextField?>
+
+<AnchorPane prefHeight="346.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ausleihvorgang.AusleihvorgangErstellenController">
+
+    <children>
+        <Label layoutX="10" layoutY="10" text="Teilnehmer:" />
+        <ComboBox fx:id="teilnehmerComboBox" layoutX="10" layoutY="40" />
+
+        <Label layoutX="10" layoutY="80" text="Fahrzeug:" />
+        <ComboBox fx:id="fahrzeugComboBox" layoutX="10" layoutY="110" />
+
+        <Label layoutX="10" layoutY="150" text="Startdatum:" />
+
+        <Label layoutX="8.0" layoutY="213.0" text="Enddatum:" />
+
+        <Button fx:id="reservierenButton" layoutX="74.0" layoutY="283.0" onAction="#reservierenButtonClicked" text="Reservieren" />
+        <Button fx:id="zurueckButton" layoutX="9.0" layoutY="283.0" onAction="#zurueckButtonClicked" text="Zurück" />
+
+        <TableView fx:id="ausleihvorgangTableView" layoutX="313.0" layoutY="9.0" prefHeight="300" prefWidth="491.0">
+            <columns>
+                <TableColumn fx:id="ausleihvorgangIdColumn" text="AusleihvorgangID" />
+                <TableColumn fx:id="teilnehmerColumn" text="Teilnehmer" />
+                <TableColumn fx:id="fahrzeugColumn" text="Fahrzeug" />
+                <TableColumn fx:id="startdatumColumn" text="Startdatum" />
+                <TableColumn fx:id="enddatumColumn" text="Enddatum" />
+            </columns>
+        </TableView>
+        <LocalDateTimeTextField fx:id="startdatumPicker" layoutX="10.0" layoutY="173.0" />
+        <LocalDateTimeTextField fx:id="enddatumPicker" layoutX="10.0" layoutY="241.0" />
+    </children>
+
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+</AnchorPane>
