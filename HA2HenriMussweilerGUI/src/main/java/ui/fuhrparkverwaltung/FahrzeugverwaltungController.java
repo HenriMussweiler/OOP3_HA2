@@ -62,11 +62,6 @@ public class FahrzeugverwaltungController implements Initializable, ControlledSc
     }
 
     @FXML
-    public void standortButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
-        myController.setScreen(Hauptmenue.SHARING_STANDORT_SCREEN);
-    }
-
-    @FXML
     public void zurueckButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(ui.menue.Hauptmenue.MAIN_SCREEN);
     }

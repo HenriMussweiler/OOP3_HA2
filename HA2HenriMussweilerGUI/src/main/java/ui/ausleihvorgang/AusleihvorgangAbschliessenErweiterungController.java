@@ -114,6 +114,7 @@ public class AusleihvorgangAbschliessenErweiterungController implements Initiali
             // Fahrzeugobjekt laden
             Long fahrzeugId = selectedAusleihvorgangTO.getFahrzeugId();
             FahrzeugTO fahrzeugTO = HauptmenueService.getFahrzeugSuchen().fahrzeugSuchenById(fahrzeugId);
+            fahrzeugTO.setKilometerstand(fahrzeugTO.getKilometerstand() + selectedAusleihvorgangTO.getGefahreneKilometer());
 
             // Kilometerstand des Fahrzeugs aktualisieren
             HauptmenueService.getFahrzeugAendern().fahrzeugAendern(fahrzeugTO);

@@ -26,8 +26,6 @@ public class FahrzeugSuchen implements IFahrzeugSuchen {
         FahrzeugManager einFahrzeugManager = FahrzeugManager.getFahrzeugManager();
         Fahrzeug einFahrzeug = einFahrzeugManager.fahrzeugSuchenById(fahrzeugId);
 
-        FahrzeugTO fahrzeugTO = einFahrzeug.toFahrzeugTO();
-
-        return fahrzeugTO;
+        return einFahrzeug.toFahrzeugTO();
     }
 }

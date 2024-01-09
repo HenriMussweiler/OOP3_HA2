@@ -61,16 +61,16 @@ public class FahrzeugLoeschenController implements Initializable, ControlledScre
     @FXML
     private TableColumn sharingStandortColumn;
 
+    @FXML
+    private Button loeschenButton;
+
+    @FXML
+    private ComboBox<Long> fahrzeugComboBox;
+
     private ScreensController myController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            initFahrzeugTableView();
-        } catch (AnwendungskernException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
     @Override
@@ -79,8 +79,34 @@ public class FahrzeugLoeschenController implements Initializable, ControlledScre
     }
 
     @Override
-    public void initData() {
+    public void initData() throws AnwendungskernException {
+        initFahrzeugComboBox();
+        initTableView();
+    }
 
+    private void initFahrzeugComboBox() throws AnwendungskernException {
+        // Prüfen ob Fahrzeuge vorhanden sind
+        if (HauptmenueService.getFahrzeuglisteErstellen().fahrzeugListeErstellen().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Keine Fahrzeuge vorhanden");
+            alert.setContentText("Es sind keine Fahrzeuge vorhanden. Bitte legen Sie zuerst ein Fahrzeug an.");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Fahrzeug auswählen");
+            alert.setContentText("Bitte wählen Sie ein Fahrzeug aus.");
+            alert.showAndWait();
+
+            // Alle Fahrzeuge laden und in die Combobox einfügen
+            ObservableList<Long> fahrzeuge = FXCollections.observableArrayList(HauptmenueService.getFahrzeuglisteErstellen().fahrzeugListeErstellen()).stream()
+                    .filter(fahrzeug -> !fahrzeug.isDeleted())
+                    .map(FahrzeugTO::getFahrzeugId)
+                    .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+            fahrzeugComboBox.setItems(fahrzeuge);
+        }
     }
 
     @FXML
@@ -88,7 +114,7 @@ public class FahrzeugLoeschenController implements Initializable, ControlledScre
         myController.setScreen(ui.menue.Hauptmenue.FVW_SCREEN);
     }
 
-    private void initFahrzeugTableView() throws AnwendungskernException {
+    private void initTableView() throws AnwendungskernException {
         fahrzeugIdColumn.setCellValueFactory(new PropertyValueFactory<>("fahrzeugId"));
         herstellerColumn.setCellValueFactory(new PropertyValueFactory<>("hersteller"));
         modellColumn.setCellValueFactory(new PropertyValueFactory<>("modell"));
@@ -101,7 +127,6 @@ public class FahrzeugLoeschenController implements Initializable, ControlledScre
         sitzplaetzeColumn.setCellValueFactory(new PropertyValueFactory<>("sitzplaetze"));
         sharingStandortColumn.setCellValueFactory(new PropertyValueFactory<>("sharingStandort"));
 
-
         ObservableList<FahrzeugTO> fahrzeuge = FXCollections.observableArrayList(HauptmenueService.getFahrzeuglisteErstellen().fahrzeugListeErstellen());
 
         fahrzeuge = FXCollections.observableArrayList(fahrzeuge.stream()
@@ -111,8 +136,8 @@ public class FahrzeugLoeschenController implements Initializable, ControlledScre
         fahrzeugTableView.setItems(fahrzeuge);
     }
 
-    public void loeschenFahrzeugClicked(MouseEvent mouseEvent) {
-        FahrzeugTO fahrzeugTO = (FahrzeugTO) fahrzeugTableView.getSelectionModel().getSelectedItem();
+    public void loeschenButtonClicked(ActionEvent actionEvent) throws AnwendungskernException {
+        FahrzeugTO fahrzeugTO = HauptmenueService.getFahrzeugSuchen().fahrzeugSuchenById(fahrzeugComboBox.getValue());
 
         // Abfragen ob das Fahrzeug wirklich gelöscht werden soll
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -121,10 +146,22 @@ public class FahrzeugLoeschenController implements Initializable, ControlledScre
         alert.setContentText("Soll das Fahrzeug wirklich gelöscht werden?");
         Optional<ButtonType> result = alert.showAndWait();
 
+        // Prüfen ob das Fahrzeug noch in einer Ausleihe geplant ist
+        if (HauptmenueService.getAusleihvorgangSuchen().ausleihvorgangSuchenByFahrzeugId(fahrzeugTO.getFahrzeugId()).stream()
+                .anyMatch(ausleihvorgangTO -> ausleihvorgangTO.getAbgeschlossen().equals("N")))
+        {
+            Alert alert2 = new Alert(Alert.AlertType.ERROR);
+            alert2.setTitle("Fahrzeug löschen");
+            alert2.setHeaderText("Fahrzeug kann nicht gelöscht werden");
+            alert2.setContentText("Das Fahrzeug ist noch in einer Ausleihe geplant und kann daher nicht gelöscht werden.");
+            alert2.showAndWait();
+            return;
+        }
+
         if (fahrzeugTO != null) {
             try {
                 HauptmenueService.getFahrzeugePflegen().fahrzeugLoeschen(fahrzeugTO.getFahrzeugId());
-                initFahrzeugTableView();
+                initTableView();
             } catch (AnwendungskernException e) {
                 throw new RuntimeException(e);
             }

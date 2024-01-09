@@ -2,16 +2,14 @@ package ui.ausleihvorgang;
 
 import awk.fuhrparkverwaltung.AnwendungskernException;
 import awk.leihvorgang.entity.AusleihvorgangTO;
+import awk.leihvorgang.entity.internal.Ausleihvorgang;
 import awk.leihvorgang.usecases.impl.AusleihvorgangManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ui.menue.ControlledScreen;
 import ui.menue.HauptmenueService;
@@ -124,8 +122,19 @@ public class AusleihvorgangStornierenController implements Initializable, Contro
             // Set the storniert status of the AusleihvorgangTO object to true
             selectedAusleihvorgangTO.setStorniert("Y");
 
+            Ausleihvorgang ausleihvorgang = selectedAusleihvorgangTO.toAusleihvorgang();
+
             // Call a method from AusleihvorgangManager to update the AusleihvorgangTO object
-            AusleihvorgangManager.getAusleihvorgangManager().ausleihvorgangStornieren(selectedAusleihvorgangTO.toAusleihvorgang());
+            AusleihvorgangManager.getAusleihvorgangManager().ausleihvorgangStornieren(ausleihvorgang);
+
+            // Display a success message
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Ausleihvorgang stornieren");
+            alert.setHeaderText("Ausleihvorgang erfolgreich storniert!");
+            alert.showAndWait();
+
+            // Initialize the TableView
+            initTableView();
         }
     }
 }

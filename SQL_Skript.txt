@@ -1,30 +1,28 @@
+drop table Ausleihvorgang cascade constraints;
+
 CREATE TABLE Ausleihvorgang (
     ausleihvorgangId NUMBER PRIMARY KEY,
     fahrzeugId NUMBER,
     teilnehmerId NUMBER,
     startdatum TIMESTAMP,
     enddatum TIMESTAMP,
-    abgeschlossen BOOLEAN,
-    storniert BOOLEAN,
+    abgeschlossen CHAR(1),
+    storniert CHAR(1),
     gefahreneKilometer NUMBER,
-    rechnungId NUMBER,
-    CONSTRAINT fk_fahrzeug FOREIGN KEY (fahrzeugId) REFERENCES Fahrzeug(fahrzeugId),
-    CONSTRAINT fk_teilnehmer FOREIGN KEY (teilnehmerId) REFERENCES Teilnehmer(teilnehmerId),
-    CONSTRAINT fk_rechnung FOREIGN KEY (rechnungId) REFERENCES Rechnung(rechnungId)
+    rechnungId NUMBER
 );
+
+
+drop table Rechnung cascade constraints;
 
 CREATE TABLE Rechnung (
     rechnungId NUMBER PRIMARY KEY,
-    ausleihvorgangId NUMBER,
     teilnehmerId NUMBER,
     rechnungsdatum TIMESTAMP,
-    gesamtsumme NUMBER,
-    CONSTRAINT fk_ausleihvorgang FOREIGN KEY (ausleihvorgangId) REFERENCES Ausleihvorgang(ausleihvorgangId),
-    CONSTRAINT fk_teilnehmer_rechnung FOREIGN KEY (teilnehmerId) REFERENCES Teilnehmer(teilnehmerId)
+    gesamtsumme NUMBER
 );
 
-CREATE SEQUENCE ausleihvorgang_sequence
-  START WITH 1
-  INCREMENT BY 1
-  NOCACHE
-  NOCYCLE;
+
+  
+  
+commit;
