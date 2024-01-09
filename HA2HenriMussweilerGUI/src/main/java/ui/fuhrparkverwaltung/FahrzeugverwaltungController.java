@@ -1,5 +1,6 @@
 package ui.fuhrparkverwaltung;
 
+import awk.fuhrparkverwaltung.AnwendungskernException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,27 +47,27 @@ public class FahrzeugverwaltungController implements Initializable, ControlledSc
     }
 
     @FXML
-    public void fahrzeugAnlegenButtonClicked(ActionEvent actionEvent) {
+    public void fahrzeugAnlegenButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.FAHRZEUG_ERSTELLEN_SCREEN);
     }
 
     @FXML
-    public void fahrzeugAendernButtonClicked(ActionEvent actionEvent) {
+    public void fahrzeugAendernButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.FAHRZEUG_AENDERN_SCREEN);
     }
 
     @FXML
-    public void fahrzeugLoeschenButtonClicked(ActionEvent actionEvent) {
+    public void fahrzeugLoeschenButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.FAHRZEUG_LOESCHEN_SCREEN);
     }
 
     @FXML
-    public void standortButtonClicked(ActionEvent actionEvent) {
+    public void standortButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.SHARING_STANDORT_SCREEN);
     }
 
     @FXML
-    public void zurueckButtonClicked(ActionEvent actionEvent) {
+    public void zurueckButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(ui.menue.Hauptmenue.MAIN_SCREEN);
     }
 }

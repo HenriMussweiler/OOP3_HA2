@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,7 +11,7 @@
 <AnchorPane prefHeight="541.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.teilnehmerverwaltung.TeilnehmerAendernController">
 
     <children>
-        <TableView fx:id="teilnehmerTableView" layoutX="31.0" layoutY="76.0" onMouseClicked="#teilnehmerAngeklickt" prefHeight="302.0" prefWidth="801.0">
+        <TableView fx:id="teilnehmerTableView" layoutX="31.0" layoutY="76.0" prefHeight="302.0" prefWidth="801.0">
             <columns>
                 <TableColumn fx:id="teilnehmerIdColumn" text="TeilnehmerID" />
                 <TableColumn fx:id="nameColumn" text="Name" />
@@ -29,7 +30,9 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Button fx:id="zurueckButton" layoutX="31.0" layoutY="431.0" mnemonicParsing="false" onAction="#zurueckButtonClicked" text="Zurück" />
-      <Label layoutX="31.0" layoutY="401.0" text="Teilnehmer zum Ändern doppelklicken" />
+        <Button fx:id="zurueckButton" layoutX="31.0" layoutY="486.0" mnemonicParsing="false" onAction="#zurueckButtonClicked" text="Zurück" />
+      <Label layoutX="31.0" layoutY="401.0" text="TeilnehmerID zum Ändern auswählen:" />
+      <Button fx:id="aendernButton" layoutX="776.0" layoutY="486.0" mnemonicParsing="false" onAction="#aendernButtonClicked" text="Ändern" />
+      <ComboBox fx:id="teilnehmerComboBox" layoutX="31.0" layoutY="431.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

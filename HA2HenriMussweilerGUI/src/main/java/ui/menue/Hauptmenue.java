@@ -2,6 +2,7 @@ package ui.menue;
 
 import java.util.Optional;
 
+import awk.fuhrparkverwaltung.AnwendungskernException;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -18,7 +19,7 @@ import javafx.scene.layout.BorderPane;
 
 public class Hauptmenue extends Application {
 
-    private Stage mainStage;
+    protected static Stage mainStage;
 
     // Screens definieren
     public static final String MAIN_SCREEN = "ui/menue/HauptmenueController";
@@ -77,9 +78,9 @@ public class Hauptmenue extends Application {
 
     public static final String SHARING_STANDORT_SCREEN_FXML = "ui/fuhrparkverwaltung/SharingStandort.fxml";
 
-    public static final String RECHNUNG_SCREEN = "ui/teilnehmerverwaltung/RechnungController";
+    public static final String RECHNUNG_SCREEN = "ui/ausleihvorgang/RechnungController";
 
-    public static final String RECHNUNG_SCREEN_FXML = "ui/teilnehmerverwaltung/Rechnung.fxml";
+    public static final String RECHNUNG_SCREEN_FXML = "ui/ausleihvorgang/Rechnung.fxml";
 
     public static final String TEILNEHMER_ERSTELLEN_SCREEN = "ui/teilnehmerverwaltung/TeilnehmerErstellenController";
 
@@ -128,7 +129,13 @@ public class Hauptmenue extends Application {
 
         mainContainer.print();
 
-        mainContainer.setScreen(Hauptmenue.MAIN_SCREEN);
+        try {
+            mainContainer.setScreen(Hauptmenue.MAIN_SCREEN);
+        } catch (AnwendungskernException e) {
+            throw new RuntimeException(e);
+        } catch (awk.teilnehmerverwaltung.AnwendungskernException e) {
+            throw new RuntimeException(e);
+        }
         Group root = new Group();
 //		BorderPane root = new BorderPane();
         root.getChildren().addAll(mainContainer);

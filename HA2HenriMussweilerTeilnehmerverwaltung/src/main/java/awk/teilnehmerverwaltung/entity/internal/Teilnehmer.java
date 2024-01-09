@@ -1,5 +1,6 @@
 package awk.teilnehmerverwaltung.entity.internal;
 
+import awk.teilnehmerverwaltung.entity.TeilnehmerTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -53,6 +54,36 @@ public class Teilnehmer {
         this.iban = iban;
         this.mail = mail;
         this.telefon = telefon;
+    }
+
+    public Teilnehmer(long teilnehmerId, String name, String vorname, String strasse, String hausnummer, String postleitzahl, String ort, String iban, String mail, String telefon) {
+        this.teilnehmerId = teilnehmerId;
+        this.name = name;
+        this.vorname = vorname;
+        this.strasse = strasse;
+        this.hausnummer = hausnummer;
+        this.postleitzahl = postleitzahl;
+        this.ort = ort;
+        this.iban = iban;
+        this.mail = mail;
+        this.telefon = telefon;
+    }
+
+    public TeilnehmerTO toTeilnehmerTO() {
+        TeilnehmerTO einTeilnehmerTO = new TeilnehmerTO();
+
+        einTeilnehmerTO.setTeilnehmerId(this.teilnehmerId);
+        einTeilnehmerTO.setName(this.name);
+        einTeilnehmerTO.setVorname(this.vorname);
+        einTeilnehmerTO.setStrasse(this.strasse);
+        einTeilnehmerTO.setHausnummer(this.hausnummer);
+        einTeilnehmerTO.setPostleitzahl(this.postleitzahl);
+        einTeilnehmerTO.setOrt(this.ort);
+        einTeilnehmerTO.setIban(this.iban);
+        einTeilnehmerTO.setMail(this.mail);
+        einTeilnehmerTO.setTelefon(this.telefon);
+
+        return einTeilnehmerTO;
     }
 
     public Long getTeilnehmerId() {

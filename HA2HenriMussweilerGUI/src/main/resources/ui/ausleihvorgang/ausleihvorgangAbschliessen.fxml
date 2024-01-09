@@ -12,7 +12,7 @@
 
     <children>
         <Label layoutX="10" layoutY="10" text="Ausleihvorgang zum Abschließen auswählen:" />
-        <ComboBox fx:id="ausleihvorgaengeComboBox" layoutX="10" layoutY="40" />
+        <ComboBox fx:id="ausleihvorgangComboBox" layoutX="10" layoutY="40" />
         <Button fx:id="zurueckButton" layoutX="9.0" layoutY="283.0" onAction="#zurueckButtonClicked" text="Zurück" />
 
         <TableView fx:id="ausleihvorgangTableView" layoutX="237.0" layoutY="10.0" prefHeight="300" prefWidth="491.0">

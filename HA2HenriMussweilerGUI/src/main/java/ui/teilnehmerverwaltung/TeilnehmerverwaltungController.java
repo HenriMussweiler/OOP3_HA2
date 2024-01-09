@@ -1,5 +1,6 @@
 package ui.teilnehmerverwaltung;
 
+import awk.fuhrparkverwaltung.AnwendungskernException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,9 +18,6 @@ public class TeilnehmerverwaltungController implements Initializable, Controlled
 
     @FXML
     private Button teilnehmerAendernButton;
-
-    @FXML
-    private Button rechnungButton;
 
     @FXML
     private Button zurueckButton;
@@ -42,22 +40,17 @@ public class TeilnehmerverwaltungController implements Initializable, Controlled
     }
 
     @FXML
-    public void teilnehmerErstellenButtonClicked(ActionEvent actionEvent) {
+    public void teilnehmerErstellenButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(ui.menue.Hauptmenue.TEILNEHMER_ERSTELLEN_SCREEN);
     }
 
     @FXML
-    public void teilnehmerAendernButtonClicked(ActionEvent actionEvent) {
+    public void teilnehmerAendernButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(ui.menue.Hauptmenue.TEILNEHMER_AENDERN_SCREEN);
     }
 
     @FXML
-    public void rechnungButtonClicked(ActionEvent actionEvent) {
-        myController.setScreen(ui.menue.Hauptmenue.RECHNUNG_SCREEN);
-    }
-
-    @FXML
-    public void zurueckButtonClicked(ActionEvent actionEvent) {
+    public void zurueckButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(ui.menue.Hauptmenue.MAIN_SCREEN);
     }
 }

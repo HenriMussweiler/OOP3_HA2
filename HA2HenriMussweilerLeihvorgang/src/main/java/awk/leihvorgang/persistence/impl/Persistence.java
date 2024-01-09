@@ -1,4 +1,4 @@
-package awk.persistence;
+package awk.leihvorgang.persistence.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,21 +13,21 @@ public class Persistence {
         Connection aConnection = null;
         try {
             // Postgres
-            Class.forName("org.postgresql.Driver");
+//            Class.forName("org.postgresql.Driver");
 
             // Oracle
-//            Class.forName ("oracle.jdbc.driver.OracleDriver");
+            Class.forName ("oracle.jdbc.driver.OracleDriver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         try {
             // Postgres
-            aConnection = DriverManager.getConnection (
-                    "jdbc:postgresql://localhost:5432/awk", "postgres", "postgres");
+//            aConnection = DriverManager.getConnection (
+//                    "jdbc:postgresql://localhost:5432/postgres", "postgres", "mysecretpassword");
 
             // Oracle
-//            aConnection = DriverManager.getConnection (
-//                    "jdbc:oracle:thin:@131.173.92.216:1521:orcl", "STUD11", "NewYork99");
+            aConnection = DriverManager.getConnection (
+                    "jdbc:oracle:thin:@131.173.92.216:1521:orcl", "STUD11", "NewYork99");
         } catch (SQLException e) {
             e.printStackTrace();
         }

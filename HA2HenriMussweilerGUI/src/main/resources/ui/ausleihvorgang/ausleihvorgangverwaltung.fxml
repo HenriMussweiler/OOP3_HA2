@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ausleihvorgang.AusleihvorgangverwaltungController">
    <children>
       <Label alignment="TOP_CENTER" layoutX="220.0" layoutY="60.0" prefWidth="175.0" text="Ausleihvorgang:">
@@ -16,6 +15,7 @@
       <Button fx:id="ausleihvorgangAnlegenButton" layoutX="220.0" layoutY="100.0" mnemonicParsing="false" onAction="#ausleihvorgangAnlegenButtonClicked" prefWidth="175.0" text="Ausleihvorgang anlegen" />
       <Button fx:id="ausleihvorgangStornierenButton" layoutX="220.0" layoutY="140.0" mnemonicParsing="false" onAction="#ausleihvorgangStornierenButtonClicked" prefWidth="175.0" text="Ausleihvorgang stornieren" />
       <Button fx:id="ausleihvorgangAbschliessenButton" layoutX="220.0" layoutY="180.0" mnemonicParsing="false" onAction="#ausleihvorgangAbschliessenButtonClicked" prefWidth="175.0" text="Ausleihvorgang abschließen" />
-      <Button fx:id="zurueckButton" layoutX="220.0" layoutY="220.0" mnemonicParsing="false" onAction="#ZurueckButtonClicked" prefWidth="175.0" text="Zurück" />
+      <Button fx:id="zurueckButton" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" onAction="#ZurueckButtonClicked" prefWidth="175.0" text="Zurück" />
+      <Button fx:id="rechnungButton" layoutX="220.0" layoutY="220.0" mnemonicParsing="false" onAction="#rechnungButtonClicked" prefWidth="175.0" text="Rechnung" />
    </children>
 </AnchorPane>

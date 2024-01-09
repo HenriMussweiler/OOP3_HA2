@@ -2,7 +2,6 @@ package awk.fuhrparkverwaltung.usecases.impl;
 
 import awk.fuhrparkverwaltung.AnwendungskernException;
 import awk.fuhrparkverwaltung.entity.internal.Fahrzeug;
-import awk.fuhrparkverwaltung.entity.internal.SharingStandort;
 import awk.fuhrparkverwaltung.usecases.IFahrzeugePflegen;
 
 public class FahrzeugePflegen implements IFahrzeugePflegen {
@@ -15,7 +14,7 @@ public class FahrzeugePflegen implements IFahrzeugePflegen {
             String hersteller, String modell, String ausstattung,
             int leistungKw, String kraftstoffart, int baujahr,
             int kilometerstand, String getriebe, int sitzplaetze,
-            SharingStandort sharingStandort, boolean deleted)
+            String sharingStandort, boolean deleted)
             throws AnwendungskernException {
 
         FahrzeugManager einFahrzeugManager = FahrzeugManager.getFahrzeugManager();
@@ -30,7 +29,7 @@ public class FahrzeugePflegen implements IFahrzeugePflegen {
     @Override
     public void fahrzeugLoeschen(Long fahrzeugId) throws AnwendungskernException {
         FahrzeugManager einFahrzeugManager = FahrzeugManager.getFahrzeugManager();
-        Fahrzeug fahrzeug = einFahrzeugManager.fahrzeugSuchenByNr(fahrzeugId);
+        Fahrzeug fahrzeug = einFahrzeugManager.fahrzeugSuchenById(fahrzeugId);
         if (fahrzeug == null)
             throw new AnwendungskernException("Fahrzeug nicht gefunden!");
         else if (fahrzeug.isDeleted())

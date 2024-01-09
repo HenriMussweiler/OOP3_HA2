@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 public abstract class GenericDAO<T> {
 
-    private final String UNIT_NAME = "OOP3-HA2";
+    private final String UNIT_NAME = "OOP3-HA2-Teilnehmerverwaltung";
 
     EntityManagerFactory emf =  Persistence.createEntityManagerFactory(UNIT_NAME);
     EntityManager em = emf.createEntityManager();

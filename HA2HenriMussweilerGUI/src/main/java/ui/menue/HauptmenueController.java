@@ -1,5 +1,6 @@
 package ui.menue;
 
+import awk.fuhrparkverwaltung.AnwendungskernException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,17 +44,17 @@ public class HauptmenueController implements Initializable, ControlledScreen{
     }
 
     @FXML
-    public void fuhrparkverwaltungButtonClicked(ActionEvent actionEvent) {
+    public void fuhrparkverwaltungButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.FVW_SCREEN);
     }
 
     @FXML
-    public void teilnehmerverwaltungButtonClicked(ActionEvent actionEvent) {
+    public void teilnehmerverwaltungButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.TVW_SCREEN);
     }
 
     @FXML
-    public void ausleihvorgangButtonClicked(ActionEvent actionEvent) {
+    public void ausleihvorgangButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.AVW_SCREEN);
     }
 

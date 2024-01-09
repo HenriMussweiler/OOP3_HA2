@@ -2,7 +2,6 @@ package awk.fuhrparkverwaltung.usecases.impl;
 
 import awk.fuhrparkverwaltung.AnwendungskernException;
 import awk.fuhrparkverwaltung.entity.internal.Fahrzeug;
-import awk.fuhrparkverwaltung.entity.internal.SharingStandort;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,25 +40,20 @@ public class FahrzeugManager extends GenericDAO {
         else return true;
     }
 
-    public Collection<Fahrzeug> fahrzeugSuchenByModell (
-            String modell) throws AnwendungskernException {
+    public Collection<Fahrzeug> fahrzeugSuchenByModell (String modell) throws AnwendungskernException {
 
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("modell", modell);
         return super.findListResult(Fahrzeug.FIND_FAHRZEUG_BY_MODELL, parameters);
     }
 
-    public Fahrzeug fahrzeugSuchenByNr (long fahrzeugId) throws AnwendungskernException {
+    public Fahrzeug fahrzeugSuchenById (long fahrzeugId) throws AnwendungskernException {
 
         return (Fahrzeug) super.find(fahrzeugId);
     }
 
     public Collection<Fahrzeug> fahrzeugeLiefern() throws AnwendungskernException {
     	return super.findAll();
-    }
-
-    public void standortErstellen(String standort) throws AnwendungskernException {
-        super.save(new SharingStandort(standort));
     }
 
 }

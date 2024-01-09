@@ -1,5 +1,6 @@
 package ui.ausleihvorgang;
 
+import awk.fuhrparkverwaltung.AnwendungskernException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +26,9 @@ public class AusleihvorgangverwaltungController implements Initializable, Contro
     @FXML
     private Button zurueckButton;
 
+    @FXML
+    private Button rechnungButton;
+
     private ScreensController myController;
 
     @Override
@@ -43,22 +47,27 @@ public class AusleihvorgangverwaltungController implements Initializable, Contro
     }
 
     @FXML
-    public void ausleihvorgangAnlegenButtonClicked(ActionEvent actionEvent) {
+    public void ausleihvorgangAnlegenButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.AUSLEIHVORGANG_ERSTELLEN_SCREEN);
     }
 
     @FXML
-    public void ausleihvorgangStornierenButtonClicked(ActionEvent actionEvent) {
+    public void ausleihvorgangStornierenButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.AUSLEIHVORGANG_STORNIEREN_SCREEN);
     }
 
     @FXML
-    public void ausleihvorgangAbschliessenButtonClicked(ActionEvent actionEvent) {
+    public void ausleihvorgangAbschliessenButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(Hauptmenue.AUSLEIHVORGANG_ABSCHLIESSEN_SCREEN);
     }
 
     @FXML
-    public void ZurueckButtonClicked(ActionEvent actionEvent) {
+    public void rechnungButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
+        myController.setScreen(Hauptmenue.RECHNUNG_SCREEN);
+    }
+
+    @FXML
+    public void ZurueckButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(ui.menue.Hauptmenue.MAIN_SCREEN);
     }
 }

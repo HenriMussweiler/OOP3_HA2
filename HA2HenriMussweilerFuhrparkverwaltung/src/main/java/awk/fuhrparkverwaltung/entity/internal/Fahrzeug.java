@@ -1,5 +1,6 @@
 package awk.fuhrparkverwaltung.entity.internal;
 
+import awk.fuhrparkverwaltung.entity.FahrzeugTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -41,9 +42,8 @@ public class Fahrzeug {
     @Column(name = "sitzplaetze")
     private int sitzplaetze;
 
-    @ManyToOne
-    @JoinColumn(name = "sharing_standort_id")
-    private SharingStandort sharingStandort;
+    @Column(name = "sharing_standort")
+    private String sharingStandort;
 
     @Column(name = "deleted")
     private boolean deleted;
@@ -51,7 +51,7 @@ public class Fahrzeug {
     public Fahrzeug() {
     }
 
-    public Fahrzeug(String hersteller, String modell, String ausstattung, int leistungKw, String kraftstoffart, int baujahr, int kilometerstand, String getriebe, int sitzplaetze, SharingStandort sharingStandort, boolean deleted) {
+    public Fahrzeug(String hersteller, String modell, String ausstattung, int leistungKw, String kraftstoffart, int baujahr, int kilometerstand, String getriebe, int sitzplaetze, String sharingStandort, boolean deleted) {
         this.hersteller = hersteller;
         this.modell = modell;
         this.ausstattung = ausstattung;
@@ -63,6 +63,54 @@ public class Fahrzeug {
         this.sitzplaetze = sitzplaetze;
         this.sharingStandort = sharingStandort;
         this.deleted = deleted;
+    }
+
+    public Fahrzeug(long fahrzeugId, String hersteller, String modell, String ausstattung, int leistungKw, String kraftstoffart, int baujahr, int kilometerstand, String getriebe, int sitzplaetze, String sharingStandort, boolean deleted) {
+        this.fahrzeugId = fahrzeugId;
+        this.hersteller = hersteller;
+        this.modell = modell;
+        this.ausstattung = ausstattung;
+        this.leistungKw = leistungKw;
+        this.kraftstoffart = kraftstoffart;
+        this.baujahr = baujahr;
+        this.kilometerstand = kilometerstand;
+        this.getriebe = getriebe;
+        this.sitzplaetze = sitzplaetze;
+        this.sharingStandort = sharingStandort;
+        this.deleted = deleted;
+    }
+
+    public Fahrzeug(String hersteller, String modell, String ausstattung, int leistungKw, String kraftstoffart, int baujahr, int kilometerstand, String getriebe, int sitzplaetze, String sharingStandort) {
+        this.hersteller = hersteller;
+        this.modell = modell;
+        this.ausstattung = ausstattung;
+        this.leistungKw = leistungKw;
+        this.kraftstoffart = kraftstoffart;
+        this.baujahr = baujahr;
+        this.kilometerstand = kilometerstand;
+        this.getriebe = getriebe;
+        this.sitzplaetze = sitzplaetze;
+        this.sharingStandort = sharingStandort;
+        this.deleted = false;
+    }
+
+    public FahrzeugTO toFahrzeugTO() {
+        FahrzeugTO einFahrzeugTO = new FahrzeugTO();
+
+        einFahrzeugTO.setFahrzeugId(this.fahrzeugId);
+        einFahrzeugTO.setHersteller(this.hersteller);
+        einFahrzeugTO.setModell(this.modell);
+        einFahrzeugTO.setAusstattung(this.ausstattung);
+        einFahrzeugTO.setLeistungKw(this.leistungKw);
+        einFahrzeugTO.setKraftstoffart(this.kraftstoffart);
+        einFahrzeugTO.setBaujahr(this.baujahr);
+        einFahrzeugTO.setKilometerstand(this.kilometerstand);
+        einFahrzeugTO.setGetriebe(this.getriebe);
+        einFahrzeugTO.setSitzplaetze(this.sitzplaetze);
+        einFahrzeugTO.setSharingStandort(this.sharingStandort);
+        einFahrzeugTO.setDeleted(this.deleted);
+
+        return einFahrzeugTO;
     }
 
     public Long getFahrzeugId() {
@@ -145,11 +193,11 @@ public class Fahrzeug {
         this.sitzplaetze = sitzplaetze;
     }
 
-    public SharingStandort getSharingStandort() {
+    public String getSharingStandort() {
         return sharingStandort;
     }
 
-    public void setSharingStandort(SharingStandort sharingStandort) {
+    public void setSharingStandort(String sharingStandort) {
         this.sharingStandort = sharingStandort;
     }
 
@@ -160,4 +208,5 @@ public class Fahrzeug {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
 }

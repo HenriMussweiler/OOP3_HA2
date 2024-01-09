@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
+import awk.fuhrparkverwaltung.AnwendungskernException;
 import ui.menue.ControlledScreen;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
@@ -77,7 +78,7 @@ public class ScreensController extends StackPane {
 
     }
 
-    public boolean setScreen(final String name) {
+    public boolean setScreen(final String name) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
 
         Node screenToRemove;
         if(screens.get(name) != null){   //screen loaded
@@ -89,6 +90,7 @@ public class ScreensController extends StackPane {
                 getChildren().add(screens.get(name));       //no one else been displayed, then just show
             }
             this.controllers.get(name).initData();
+            Hauptmenue.mainStage.sizeToScene();
             return true;
         }else {
             System.out.println("screen hasn't been loaded!!! \n");
