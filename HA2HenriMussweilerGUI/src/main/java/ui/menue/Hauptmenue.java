@@ -74,10 +74,6 @@ public class Hauptmenue extends Application {
 
     public static final String FAHRZEUG_AENDERN_ERWEITERUNG_SCREEN_FXML = "ui/fuhrparkverwaltung/FahrzeugAendernErweiterung.fxml";
 
-    public static final String SHARING_STANDORT_SCREEN = "ui/fuhrparkverwaltung/SharingStandortController";
-
-    public static final String SHARING_STANDORT_SCREEN_FXML = "ui/fuhrparkverwaltung/SharingStandort.fxml";
-
     public static final String RECHNUNG_SCREEN = "ui/ausleihvorgang/RechnungController";
 
     public static final String RECHNUNG_SCREEN_FXML = "ui/ausleihvorgang/Rechnung.fxml";
@@ -119,7 +115,6 @@ public class Hauptmenue extends Application {
         mainContainer.loadScreen(Hauptmenue.FAHRZEUG_SCREEN, Hauptmenue.FAHRZEUG_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.FAHRZEUG_ERSTELLEN_SCREEN, Hauptmenue.FAHRZEUG_ERSTELLEN_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.FAHRZEUG_LOESCHEN_SCREEN, Hauptmenue.FAHRZEUG_LOESCHEN_SCREEN_FXML);
-        mainContainer.loadScreen(Hauptmenue.SHARING_STANDORT_SCREEN, Hauptmenue.SHARING_STANDORT_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.RECHNUNG_SCREEN, Hauptmenue.RECHNUNG_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.TEILNEHMER_ERSTELLEN_SCREEN, Hauptmenue.TEILNEHMER_ERSTELLEN_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.TEILNEHMER_AENDERN_SCREEN, Hauptmenue.TEILNEHMER_AENDERN_SCREEN_FXML);

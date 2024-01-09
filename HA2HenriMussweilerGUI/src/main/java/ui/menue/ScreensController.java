@@ -24,31 +24,29 @@ import javafx.scene.layout.StackPane;
 
 public class ScreensController extends StackPane {
 
-        private HashMap<String, Node> screens = new HashMap<>();
-        private HashMap<String, ControlledScreen> controllers = new HashMap<>();
-        public static String sourcePath = "";
+    private HashMap<String, Node> screens = new HashMap<>();
+    private HashMap<String, ControlledScreen> controllers = new HashMap<>();
+    public static String sourcePath = "";
 
-        public ScreensController(){
-            super();
-        }
+    public ScreensController(){
+        super();
+    }
 
 
-        public void addScreen(String name, Node screen) {
-            screens.put(name, screen);
-        }
+    public void addScreen(String name, Node screen) {
+        screens.put(name, screen);
+    }
 
     public boolean loadScreen(String name, String resource) {
         System.out.println("ID: "+name);
         System.out.println("Resource: "+resource);
 
         String file = System.getProperty("user.dir")+"/bin/"+resource;
-//		System.out.println(file);
+		System.out.println(file);
 
         try {
             FXMLLoader myLoader = new FXMLLoader();
             File f = new File(file);
-            /* for Reading from File-System use absolute Path*/
-//		       URL url = f.toURI().toURL();
 
             /* for Reading from jar-File user relative Path */
             URL url = getClass().getClassLoader().getResource(resource).toURI().toURL();
