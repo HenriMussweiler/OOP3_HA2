@@ -26,13 +26,13 @@ public class Hauptmenue extends Application {
 
     public static final String MAIN_SCREEN_FXML = "ui/menue/Hauptmenue.fxml";
 
-    public static final String FVW_SCREEN = "ui/furhparkverwaltung/FahrzeugVerwaltungController";
+    public static final String FVW_SCREEN = "ui/furhparkverwaltung/FahrzeugverwaltungController";
 
-    public static final String FVW_SCREEN_FXML = "ui/fuhrparkverwaltung/FahrzeugVerwaltung.fxml";
+    public static final String FVW_SCREEN_FXML = "ui/fuhrparkverwaltung/Fahrzeugverwaltung.fxml";
 
-    public static final String TVW_SCREEN = "ui/teilnehmerverwaltung/TeilnehmerVerwaltungController";
+    public static final String TVW_SCREEN = "ui/teilnehmerverwaltung/TeilnehmerverwaltungController";
 
-    public static final String TVW_SCREEN_FXML = "ui/teilnehmerverwaltung/TeilnehmerVerwaltung.fxml";
+    public static final String TVW_SCREEN_FXML = "ui/teilnehmerverwaltung/Teilnehmerverwaltung.fxml";
 
     public static final String AVW_SCREEN = "ui/ausleihvorgang/AusleihvorgangverwaltungController";
 
@@ -77,6 +77,8 @@ public class Hauptmenue extends Application {
     public static final String RECHNUNG_SCREEN = "ui/ausleihvorgang/RechnungController";
 
     public static final String RECHNUNG_SCREEN_FXML = "ui/ausleihvorgang/Rechnung.fxml";
+    public static final String ABGRECHNETE_AUSLEIHVORGAENGE_ANZEIGEN_SCREEN = "ui/ausleihvorgang/AbgerechneteAusleihvorgaengeAnzeigenController";
+    public static final String ABGRECHNETE_AUSLEIHVORGAENGE_ANZEIGEN_SCREEN_FXML = "ui/ausleihvorgang/AbgerechneteAusleihvorgaengeAnzeigen.fxml";
 
     public static final String TEILNEHMER_ERSTELLEN_SCREEN = "ui/teilnehmerverwaltung/TeilnehmerErstellenController";
 
@@ -116,6 +118,7 @@ public class Hauptmenue extends Application {
         mainContainer.loadScreen(Hauptmenue.FAHRZEUG_ERSTELLEN_SCREEN, Hauptmenue.FAHRZEUG_ERSTELLEN_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.FAHRZEUG_LOESCHEN_SCREEN, Hauptmenue.FAHRZEUG_LOESCHEN_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.RECHNUNG_SCREEN, Hauptmenue.RECHNUNG_SCREEN_FXML);
+        mainContainer.loadScreen(Hauptmenue.ABGRECHNETE_AUSLEIHVORGAENGE_ANZEIGEN_SCREEN, Hauptmenue.ABGRECHNETE_AUSLEIHVORGAENGE_ANZEIGEN_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.TEILNEHMER_ERSTELLEN_SCREEN, Hauptmenue.TEILNEHMER_ERSTELLEN_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.TEILNEHMER_AENDERN_SCREEN, Hauptmenue.TEILNEHMER_AENDERN_SCREEN_FXML);
         mainContainer.loadScreen(Hauptmenue.TEILNEHMER_SCREEN, Hauptmenue.TEILNEHMER_SCREEN_FXML);

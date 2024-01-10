@@ -24,10 +24,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RechnungController implements Initializable, ControlledScreen {
@@ -108,10 +105,33 @@ public class RechnungController implements Initializable, ControlledScreen {
         if (selectedTeilnehmerId != null && startDate != null && endDate != null) {
             // Retrieve all AusleihvorgangTO objects for the selected Teilnehmer within the specified date range
             List<AusleihvorgangTO> ausleihvorgangTOList = HauptmenueService.getAusleihvorgangSuchen().ausleihvorgangSuchenByTeilnehmerId(teilnehmerTO.getTeilnehmerId()).stream()
-                    .filter(ausleihvorgangTO -> ausleihvorgangTO.getStorniert().equals("Y") || ausleihvorgangTO.getAbgeschlossen().equals("Y") && ausleihvorgangTO.getRechnungId() == null
-                            && LocalDateTime.parse(ausleihvorgangTO.getStartdatum(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).toLocalDate().isAfter(startDate.minusDays(1))
-                            && LocalDateTime.parse(ausleihvorgangTO.getEnddatum(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).toLocalDate().isBefore(endDate.plusDays(1)))
+                    .filter(ausleihvorgangTO ->
+                            (ausleihvorgangTO.getStorniert().equals("Y") || ausleihvorgangTO.getAbgeschlossen().equals("Y"))
+                                    && LocalDateTime.parse(ausleihvorgangTO.getStartdatum(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).toLocalDate().isAfter(startDate.minusDays(1))
+                                    && LocalDateTime.parse(ausleihvorgangTO.getEnddatum(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).toLocalDate().isBefore(endDate.plusDays(1))
+                                    && LocalDateTime.parse(ausleihvorgangTO.getStartdatum(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).toLocalDate().isBefore(endDate.plusDays(1))
+                                    && LocalDateTime.parse(ausleihvorgangTO.getEnddatum(), DateTimeFormatter.ISO_LOCAL_DATE_TIME).toLocalDate().isAfter(startDate.minusDays(1))
+                    )
                     .collect(Collectors.toList());
+
+            System.out.println("----------------------------------------");
+            System.out.println("Vor dem Iterieren");
+            System.out.println(ausleihvorgangTOList);
+            System.out.println("----------------------------------------");
+
+            Iterator<AusleihvorgangTO> iterator = ausleihvorgangTOList.iterator();
+            while (iterator.hasNext()) {
+                AusleihvorgangTO ausleihvorgangTO = iterator.next();
+                if (ausleihvorgangTO.getRechnungId() != 0) {
+                    // Ausleihvorgang aus der Liste entfernen, wenn er bereits eine Rechnung hat
+                    iterator.remove();
+                }
+            }
+
+            System.out.println("----------------------------------------");
+            System.out.println("Vor dem Iterieren");
+            System.out.println(ausleihvorgangTOList);
+            System.out.println("----------------------------------------");
 
             double cost = 0;
 
@@ -156,6 +176,7 @@ public class RechnungController implements Initializable, ControlledScreen {
             alert.showAndWait();
         }
     }
+
 
     @FXML
     public void zurueckButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
