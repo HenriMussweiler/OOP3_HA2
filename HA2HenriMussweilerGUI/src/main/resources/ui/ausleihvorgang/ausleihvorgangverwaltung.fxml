@@ -15,7 +15,8 @@
       <Button fx:id="ausleihvorgangAnlegenButton" layoutX="220.0" layoutY="100.0" mnemonicParsing="false" onAction="#ausleihvorgangAnlegenButtonClicked" prefWidth="175.0" text="Ausleihvorgang anlegen" />
       <Button fx:id="ausleihvorgangStornierenButton" layoutX="220.0" layoutY="140.0" mnemonicParsing="false" onAction="#ausleihvorgangStornierenButtonClicked" prefWidth="175.0" text="Ausleihvorgang stornieren" />
       <Button fx:id="ausleihvorgangAbschliessenButton" layoutX="220.0" layoutY="180.0" mnemonicParsing="false" onAction="#ausleihvorgangAbschliessenButtonClicked" prefWidth="175.0" text="Ausleihvorgang abschließen" />
-      <Button fx:id="zurueckButton" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" onAction="#ZurueckButtonClicked" prefWidth="175.0" text="Zurück" />
+      <Button fx:id="zurueckButton" layoutX="220.0" layoutY="300.0" mnemonicParsing="false" onAction="#ZurueckButtonClicked" prefWidth="175.0" text="Zurück" />
       <Button fx:id="rechnungButton" layoutX="220.0" layoutY="220.0" mnemonicParsing="false" onAction="#rechnungButtonClicked" prefWidth="175.0" text="Rechnung" />
+      <Button fx:id="abgerechneteAvButton" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" onAction="#abgerechneteAvButtonClicked" prefWidth="175.0" text="Fakturierte Ausleihvorgänge" />
    </children>
 </AnchorPane>
