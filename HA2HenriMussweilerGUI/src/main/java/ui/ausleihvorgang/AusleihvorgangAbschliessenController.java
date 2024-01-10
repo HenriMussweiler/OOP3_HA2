@@ -104,6 +104,7 @@ public class AusleihvorgangAbschliessenController implements Initializable, Cont
 
     private void initAusleihvorgangComboBox() {
         ObservableList<Long> ausleihvorgaengeTOList = FXCollections.observableArrayList(HauptmenueService.getAusleihvorgangSuchen().liefereAlleAusleihvorgaenge().stream()
+                .filter(ausleihvorgangTO -> !ausleihvorgangTO.getStorniert().equals("Y") && !ausleihvorgangTO.getAbgeschlossen().equals("Y"))
                 .map(AusleihvorgangTO::getAusleihvorgangId)
                 .collect(Collectors.toList())
         );

@@ -17,6 +17,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.assembly.plugin.version>3.4.2</maven.assembly.plugin.version>
     </properties>
 
     <dependencies>
@@ -113,11 +114,6 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>ui.menue.HauptmenueLauncher</mainClass>
-                    <stripDebug>true</stripDebug>
-                    <compress>2</compress>
-                    <jlinkZipName>hauptmenue</jlinkZipName>
-                    <jlinkImageName>hauptmenue</jlinkImageName>
-                    <launcher>hauptmenue=ui.menue.HauptmenueLauncher</launcher>
                 </configuration>
             </plugin>
 
@@ -148,9 +144,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>
-                                ui.menue.HauptmenueLauncher
-                            </mainClass>
+                            <mainClass>ui.menue.HauptmenueLauncher</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

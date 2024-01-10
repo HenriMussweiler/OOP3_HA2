@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 import awk.fuhrparkverwaltung.AnwendungskernException;
@@ -47,6 +48,8 @@ public class ScreensController extends StackPane {
         try {
             FXMLLoader myLoader = new FXMLLoader();
             File f = new File(file);
+            /* for Reading from File-System use absolute Path*/
+//            URL url = f.toURI().toURL();
 
             /* for Reading from jar-File user relative Path */
             URL url = getClass().getClassLoader().getResource(resource).toURI().toURL();

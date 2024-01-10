@@ -77,20 +77,7 @@ public class FahrzeugErstellenController implements Initializable, ControlledScr
     }
 
     private void erstelleStandorte() throws AnwendungskernException {
-        //Prüfen ob die Standorte schon bestehen
-//        if (HauptmenueService.getStandortlisteErstellen().sharingListeAusgeben().isEmpty())
-//        {
-//            Standorte erstellen
-//            try {
-//                HauptmenueService.getStandortErstellen().standortErstellen("Osnabrück");
-//                HauptmenueService.getStandortErstellen().standortErstellen("Münster");
-//                HauptmenueService.getStandortErstellen().standortErstellen("Bielefeld");
-//                HauptmenueService.getStandortErstellen().standortErstellen("Hamburg");
-//                HauptmenueService.getStandortErstellen().standortErstellen("Berlin");
-//            } catch (AnwendungskernException e) {
-//                e.printStackTrace();
-//            }
-//        }
+
     }
 
     private void initComboBoxes() throws AnwendungskernException {
@@ -159,6 +146,19 @@ public class FahrzeugErstellenController implements Initializable, ControlledScr
             alert.setHeaderText("Fahrzeug erfolgreich erstellt");
             alert.setContentText("Das Fahrzeug wurde erfolgreich erstellt!");
             alert.showAndWait();
+
+            // Felder leeren
+            herstellerField.setText("");
+            modellField.setText("");
+            ausstattungField.setText("");
+            leistungField.setText("");
+            kilometerstandField.setText("");
+            baujahrField.setText("");
+            sitzplaetzeField.setText("");
+            kraftstoffComboBox.setValue(null);
+            getriebeComboBox.setValue(null);
+            sharingComboBox.setValue(null);
+
         }
     }
 
