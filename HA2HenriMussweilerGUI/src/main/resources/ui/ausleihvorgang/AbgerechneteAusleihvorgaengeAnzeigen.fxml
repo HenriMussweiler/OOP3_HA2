@@ -7,18 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ausleihvorgang.AbgerechneteAusleihvorgaengeAnzeigenController">
+<AnchorPane prefHeight="400.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ausleihvorgang.AbgerechneteAusleihvorgaengeAnzeigenController">
    <children>
       <Button fx:id="zurueckButton" layoutX="37.0" layoutY="360.0" mnemonicParsing="false" onAction="#zurueckButtonClicked" text="Zurück" />
-       <TableView fx:id="ausleihvorgangTableView" layoutX="237.0" layoutY="10.0" prefHeight="300" prefWidth="491.0">
+       <TableView fx:id="ausleihvorgangTableView" layoutX="37.0" layoutY="50.0" prefHeight="300" prefWidth="607.0">
            <columns>
-               <TableColumn fx:id="ausleihvorgangColumn" text="AusleihvorgangID" />
-               <TableColumn fx:id="teilnehmerColumn" text="Teilnehmer" />
-               <TableColumn fx:id="fahrzeugColumn" text="Fahrzeug" />
-               <TableColumn fx:id="startdatumColumn" text="Startdatum" />
-               <TableColumn fx:id="enddatumColumn" text="Enddatum" />
-               <TableColumn fx:id="rechnungColumn" text="Preis" />
+               <TableColumn fx:id="ausleihvorgangIdColumn" prefWidth="129.0" text="AusleihvorgangID" />
+               <TableColumn fx:id="teilnehmerColumn" prefWidth="75.0" text="Teilnehmer" />
+               <TableColumn fx:id="fahrzeugColumn" prefWidth="88.0" text="Fahrzeug" />
+               <TableColumn fx:id="startdatumColumn" prefWidth="75.0" text="Startdatum" />
+               <TableColumn fx:id="enddatumColumn" prefWidth="86.0" text="Enddatum" />
+               <TableColumn fx:id="rechnungColumn" prefWidth="124.0" text="Rechnung" />
            </columns>
        </TableView>
       <Label layoutX="37.0" layoutY="22.0" text="Abgerechnete Ausleihvorgänge:">

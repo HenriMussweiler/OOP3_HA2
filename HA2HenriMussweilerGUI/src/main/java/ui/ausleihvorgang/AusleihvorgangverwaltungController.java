@@ -70,4 +70,8 @@ public class AusleihvorgangverwaltungController implements Initializable, Contro
     public void ZurueckButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
         myController.setScreen(ui.menue.Hauptmenue.MAIN_SCREEN);
     }
+
+    public void abgerechneteAvButtonClicked(ActionEvent actionEvent) throws AnwendungskernException, awk.teilnehmerverwaltung.AnwendungskernException {
+        myController.setScreen(Hauptmenue.ABGRECHNETE_AUSLEIHVORGAENGE_ANZEIGEN_SCREEN);
+    }
 }
